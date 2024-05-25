@@ -1,3 +1,11 @@
+# Flight Review + AI
+This project is a fork of Flight Review, enhanced with AI capabilities to detect anomalies in flight logs.
+You can find the AI model source code at https://github.com/AkashKarnatak/PX4AI.
+
+**Below is the original readme**
+
+---
+
 # Flight Review
 
 This is a web application for flight log analysis. It allows users to upload
