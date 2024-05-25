@@ -2,6 +2,8 @@
 This project is a fork of Flight Review, enhanced with AI capabilities to detect anomalies in flight logs.
 You can find the AI model source code at https://github.com/AkashKarnatak/PX4AI.
 
+https://github.com/AkashKarnatak/PX4AI/assets/54985621/3c274263-f1a0-45ee-8b37-f6afec2b72aa
+
 **Below is the original readme**
 
 ---
