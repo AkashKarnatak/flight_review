@@ -26,7 +26,7 @@ from vtol_tailsitter import *
 
 
 def generate_plots(ulog, px4_ulog, db_data, vehicle_data, link_to_3d_page,
-                   link_to_pid_analysis_page):
+                   link_to_pid_analysis_page, link_to_ai_analysis_page):
     """ create a list of bokeh plots (and widgets) to show """
 
     plots = []
@@ -128,8 +128,15 @@ def generate_plots(ulog, px4_ulog, db_data, vehicle_data, link_to_3d_page,
 
     # Heading
     curdoc().template_variables['title_html'] = get_heading_html(
-        ulog, px4_ulog, db_data, link_to_3d_page,
-        additional_links=[("Open PID Analysis", link_to_pid_analysis_page)])
+        ulog,
+        px4_ulog,
+        db_data,
+        link_to_3d_page,
+        additional_links=[
+            ("Open PID Analysis", link_to_pid_analysis_page),
+            ("Open AI Analysis", link_to_ai_analysis_page)
+        ]
+    )
 
     # info text on top (logging duration, max speed, ...)
     curdoc().template_variables['info_table_html'] = \

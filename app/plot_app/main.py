@@ -18,6 +18,7 @@ from colors import HTML_color_to_RGB
 from db_entry import *
 from configured_plots import generate_plots
 from pid_analysis_plots import get_pid_analysis_plots
+from ai_analysis_plots import get_ai_analysis_plots
 from statistics_plots import StatisticsPlots
 
 #pylint: disable=invalid-name, redefined-outer-name
@@ -199,6 +200,20 @@ else:
                 traceback.print_exc()
                 title, error_message, plots = show_exception_page()
 
+        elif plots_page == 'ai_analysis':
+            try:
+                link_to_main_plots = '?log='+log_id
+                plots = get_ai_analysis_plots(ulog, px4_ulog, db_data,
+                                               link_to_main_plots)
+
+                title = 'Flight Review - '+px4_ulog.get_mav_type()
+
+            except Exception as error:
+                # catch all errors to avoid showing a blank page. Note that if we
+                # get here, there's a bug somewhere that needs to be fixed!
+                traceback.print_exc()
+                title, error_message, plots = show_exception_page()
+
         else:
             # template variables
             curdoc().template_variables['cur_err_ids'] = db_data.error_labels
@@ -225,10 +240,12 @@ else:
 
             link_to_3d_page = '3d?log='+log_id
             link_to_pid_analysis_page = '?plots=pid_analysis&log='+log_id
+            link_to_ai_analysis_page = '?plots=ai_analysis&log='+log_id
 
             try:
                 plots = generate_plots(ulog, px4_ulog, db_data, vehicle_data,
-                                       link_to_3d_page, link_to_pid_analysis_page)
+                                       link_to_3d_page, link_to_pid_analysis_page,
+                                       link_to_ai_analysis_page)
 
                 title = 'Flight Review - '+px4_ulog.get_mav_type()
 
